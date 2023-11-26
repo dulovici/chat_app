@@ -16,13 +16,14 @@ const io = new Server(server, {
   });
 
 io.on("connection", (socket)=> {
-    console.log(socket.id)
+    console.log(`User connected: ${socket.id}`)
 
-    io.on("disconnect", ()=> {
-        console.log("user disconected", socket.id)
-    })
+    
+    socket.on("disconnect", () => {
+      console.log("User Disconnected", socket.id);
+    });
 })
 
 server.listen(3001, ()=> {
     console.log("SERVER RUNNING")
-})
+});
